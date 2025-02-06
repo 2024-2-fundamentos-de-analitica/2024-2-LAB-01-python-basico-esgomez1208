@@ -26,3 +26,23 @@ def pregunta_04():
      ('12', 3)]
 
     """
+    # Abrir el archivo data.csv
+    with open('./files/input/data.csv') as f:
+        # Leer las lineas del archivo
+        lines = f.readlines()
+        # Inicializar el diccionario de meses
+        meses = {}
+        # Iterar sobre las lineas
+        for line in lines:
+            # Separar los elementos de la linea
+            elements = line.strip().split('\t')
+            # Obtener el mes de la tercera columna
+            mes = elements[2].split('-')[1]
+            # Si el mes no esta en el diccionario
+            if mes not in meses:
+                # Agregar el mes al diccionario
+                meses[mes] = 0
+            # Incrementar la cantidad de la letra
+            meses[mes] += 1
+    # Retornar la lista de tuplas ordenadas
+    return sorted(meses.items())

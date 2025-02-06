@@ -20,3 +20,21 @@ def pregunta_10():
 
 
     """
+    with open('./files/input/data.csv') as f:
+        #Leer las lineas del archivo
+        lines = f.readlines()
+        #Inicializar la lista de tuplas
+        lista = []
+        #Iterar sobre las lineas
+        for line in lines:
+            #Separar los elementos de la linea
+            elements = line.strip().split('\t')
+            #Obtener la primera columna de la linea
+            columna1 = elements[0]
+            #Obtener la cuarta columna de la linea
+            columna4 = elements[3]
+            #Obtener la quinta columna de la linea
+            columna5 = elements[4]
+            #Agregar la tupla a la lista
+            lista.append((columna1, len(columna4.split(',')), len(columna5.split(','))))
+    return lista
